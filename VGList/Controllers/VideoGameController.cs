@@ -16,6 +16,7 @@ namespace VGList.Controllers
             _logger = logger; //get the logger from the DI container
         }
 
+        //Get all video games present in the app
         [HttpGet(Name = "GetVideoGames")]
         public IEnumerable<VideoGame> Get()
         {

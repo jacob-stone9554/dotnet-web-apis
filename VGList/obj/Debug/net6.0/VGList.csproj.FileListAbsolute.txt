@@ -30,3 +30,4 @@ C:\Users\jacob\Documents\Github\Dotnet-Web-APIs\VGList\obj\Debug\net6.0\refint\V
 C:\Users\jacob\Documents\Github\Dotnet-Web-APIs\VGList\obj\Debug\net6.0\VGList.pdb
 C:\Users\jacob\Documents\Github\Dotnet-Web-APIs\VGList\obj\Debug\net6.0\VGList.genruntimeconfig.cache
 C:\Users\jacob\Documents\Github\Dotnet-Web-APIs\VGList\obj\Debug\net6.0\ref\VGList.dll
+C:\Users\jacob\Documents\Github\Dotnet-Web-APIs\VGList\bin\Debug\net6.0\appsettings.Staging.json
