@@ -26,7 +26,25 @@ namespace VGList.Controllers
                 {
                     Id = 1,
                     Name = "Minecraft",
-                    Year = 2011
+                    Year = 2011,
+                    MinPlayers = 1,
+                    MaxPlayers = 16
+                },
+                new VideoGame
+                {
+                    Id = 2,
+                    Name = "Stardew Valley",
+                    Year = 2016,
+                    MinPlayers = 1,
+                    MaxPlayers = 8
+                },
+                new VideoGame
+                {
+                    Id = 3,
+                    Name = "Apex Legends",
+                    Year = 2019,
+                    MinPlayers = 1,
+                    MaxPlayers = 3
                 }
             };
         }
