@@ -6,6 +6,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//add and configure defualt CORS policies
+builder.Services.AddCors(options =>
+{
+    //add a policy allowing only origins specified in appsettings.json
+    options.AddDefaultPolicy(cfg =>
+    {
+        cfg.WithOrigins(builder.Configuration["AllowedOrigins"]);
+        cfg.AllowAnyHeader();
+        cfg.AllowAnyMethod();
+    });
+
+    //add a policy allowing all/any origins (apply only to certain endpoints, like /error)
+    options.AddPolicy(name: "AnyOrigin",
+        cfg =>
+        {
+            cfg.AllowAnyOrigin();
+            cfg.AllowAnyHeader();
+            cfg.AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +56,8 @@ else
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AnyOrigin"); //this globally applies the AnyOrigin Cors policy
 
 app.MapControllers();
 
