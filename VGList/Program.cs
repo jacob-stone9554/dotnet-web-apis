@@ -58,21 +58,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapGet("/cod/test", async context =>
-{
-    context.Response.Headers["Cache-Control"] = "no-store";
-    var responseText = "<script>" +
-        "window.alert('Your client supports JavaScript!'" +
-        "\\r\\n\\r\\n" +
-        $"Server time (UTC): {DateTime.UtcNow.ToString("O")}" +
-        "\\r\\n" +
-        "Client time (UTC): ' + new Date().toISOString());" +
-        "</script>" +
-        "<noscript>Your client does not support javascript</noscript>";
-    await context.Response.WriteAsync(responseText, context.RequestAborted);
-})
-.RequireCors("AnyOrigin");
-//app.MapControllers()
-//  .RequireCors("AnyOrigin");//this globally applies the AnyOrigin cors policy. To specify a more specific policy, use the [EnableCors] attribute on the controller.
+
+app.MapControllers()
+  .RequireCors("AnyOrigin");//this globally applies the AnyOrigin cors policy. To specify a more specific policy, use the [EnableCors] attribute on the controller.
 
 app.Run();
