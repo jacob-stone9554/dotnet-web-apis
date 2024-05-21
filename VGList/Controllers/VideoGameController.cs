@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VGList.DTO;
 using VGList.Models;
 
 namespace VGList.Controllers
@@ -17,41 +18,29 @@ namespace VGList.Controllers
         }
 
         //Get all video games present in the app
+        //added new implementation using DTOs that complies with the HATEAOS constraint of RESTful APIs.
         [HttpGet(Name = "GetVideoGames")]
-        public IEnumerable<VideoGame> Get()
+        public RestDTO<VideoGame[]> Get()
         {
-            return new[]
+            return new RestDTO<VideoGame[]>()
             {
-                new VideoGame
+                Data = new VideoGame[]
                 {
-                    Id = 1,
-                    Name = "Minecraft",
-                    Year = 2011,
-                    MinPlayers = 1,
-                    MaxPlayers = 16
+                    new VideoGame
+                    {
+                        Id = 1,
+                        Name = "Minecraft",
+                        Year = 2011,
+                        MinPlayers = 1,
+                        MaxPlayers = 8
+                    }
                 },
-                new VideoGame
+                Links = new List<LinkDTO>
                 {
-                    Id = 2,
-                    Name = "Stardew Valley",
-                    Year = 2016,
-                    MinPlayers = 1,
-                    MaxPlayers = 8
-                },
-                new VideoGame
-                {
-                    Id = 3,
-                    Name = "Apex Legends",
-                    Year = 2019,
-                    MinPlayers = 1,
-                    MaxPlayers = 3
-                },
-                new VideoGame
-                {
-                    Id = 4,
-                    Name = "Five Nights at Freddy's",
-                    MinPlayers = 1,
-                    MaxPlayers = 1
+                    new LinkDTO (
+                        Url.Action(null, "Video Games", null, Request.Scheme)!,
+                        "self",
+                        "GET"),
                 }
             };
         }
