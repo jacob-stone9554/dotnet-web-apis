@@ -45,6 +45,13 @@ namespace VGList.Controllers
                     Year = 2019,
                     MinPlayers = 1,
                     MaxPlayers = 3
+                },
+                new VideoGame
+                {
+                    Id = 4,
+                    Name = "Five Nights at Freddy's",
+                    MinPlayers = 1,
+                    MaxPlayers = 1
                 }
             };
         }
